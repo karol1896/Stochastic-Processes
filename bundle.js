@@ -202,7 +202,7 @@ var _Processes2 = _interopRequireDefault(_Processes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(_Processes2.default, null), document.getElementById("app"));
-},{"./components/Processes":7,"react":50,"react-dom":47}],3:[function(require,module,exports){
+},{"./components/Processes":10,"react":54,"react-dom":51}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -401,7 +401,7 @@ var CompPoisson = function (_React$Component) {
                             null,
                             "Liczba skok\xF3w"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.nOfJumps, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "nOfJumps");
                             } })
                     ),
@@ -413,7 +413,7 @@ var CompPoisson = function (_React$Component) {
                             null,
                             "Lambda"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.lambda, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "lambda");
                             } })
                     ),
@@ -425,7 +425,7 @@ var CompPoisson = function (_React$Component) {
                             null,
                             "\u015Arednia"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.miu, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "miu");
                             } })
                     ),
@@ -437,7 +437,7 @@ var CompPoisson = function (_React$Component) {
                             null,
                             "Odchylenie standardowe"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.sigma, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "sigma");
                             } })
                     )
@@ -472,7 +472,7 @@ var CompPoisson = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = CompPoisson;
-},{"d3":40,"react":50}],4:[function(require,module,exports){
+},{"d3":44,"react":54}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -515,8 +515,8 @@ var Gamma = function (_React$Component) {
 
         _this.state = {
             data: _this.Gamma(5000, 0.01, 0.5, 2, 1, 0),
-            nOfSteps: 1000,
-            stepSize: 0.1,
+            nOfSteps: 5000,
+            stepSize: 0.01,
             shape: 0.5,
             scale: 2,
             miu: 1,
@@ -529,7 +529,6 @@ var Gamma = function (_React$Component) {
     _createClass(Gamma, [{
         key: "onClick",
         value: function onClick() {
-            console.log(this.state);
             var _state = this.state,
                 shape = _state.shape,
                 scale = _state.scale,
@@ -674,7 +673,7 @@ var Gamma = function (_React$Component) {
                             null,
                             "Kszta\u0142t"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.shape, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "shape");
                             } })
                     ),
@@ -686,7 +685,7 @@ var Gamma = function (_React$Component) {
                             null,
                             "Skala"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.scale, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "scale");
                             } })
                     ),
@@ -698,7 +697,7 @@ var Gamma = function (_React$Component) {
                             null,
                             "Liczba krok\xF3w"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.nOfSteps, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "nOfSteps");
                             } })
                     ),
@@ -710,8 +709,8 @@ var Gamma = function (_React$Component) {
                             null,
                             "krok"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
-                                return _this2.setParameter(e.target.value, "step");
+                        _react2.default.createElement("textarea", { value: this.state.stepSize, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "stepSize");
                             } })
                     ),
                     _react2.default.createElement(
@@ -722,7 +721,7 @@ var Gamma = function (_React$Component) {
                             null,
                             "\u015Arednia"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.miu, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "miu");
                             } })
                     ),
@@ -734,7 +733,7 @@ var Gamma = function (_React$Component) {
                             null,
                             "Przesuni\u0119ty"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.shifted, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "shifted");
                             } })
                     )
@@ -769,7 +768,316 @@ var Gamma = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Gamma;
-},{"d3":40,"jstat":41,"react":50}],5:[function(require,module,exports){
+},{"d3":44,"jstat":45,"react":54}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _d = require("d3");
+
+var d3 = _interopRequireWildcard(_d);
+
+var _jstat = require("jstat");
+
+var jStat = _interopRequireWildcard(_jstat);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var GammaOU = function (_React$Component) {
+    _inherits(GammaOU, _React$Component);
+
+    function GammaOU(props) {
+        _classCallCheck(this, GammaOU);
+
+        var _this = _possibleConstructorReturn(this, (GammaOU.__proto__ || Object.getPrototypeOf(GammaOU)).call(this, props));
+
+        _this.state = {
+            data: _this.GammaOU(500, 0.01, 4, 18, 4, 0.08),
+            nOfSteps: 500,
+            stepSize: 0.01,
+            a: 4,
+            b: 18,
+            miu: 4,
+            y: 0.08,
+            random: 0
+        };
+        return _this;
+    }
+
+    _createClass(GammaOU, [{
+        key: "onClick",
+        value: function onClick() {
+            console.log(this.state);
+            var _state = this.state,
+                a = _state.a,
+                b = _state.b,
+                nOfSteps = _state.nOfSteps,
+                stepSize = _state.stepSize,
+                miu = _state.miu,
+                y = _state.y;
+
+            this.setState({ random: Math.random() });
+            this.setState({ data: this.GammaOU(nOfSteps, stepSize, a, b, miu, y) });
+        }
+    }, {
+        key: "GammaOU",
+        value: function GammaOU(n, k, a, b, miu, y) {
+            var x = [{
+                a: 0,
+                b: y
+            }];
+            var s = 0;
+            var N = [];
+            while (s < n * k) {
+                N.push(s);
+                s += -Math.log(Math.random()) / (a * miu);
+            }
+            var start = 1;
+            var g1 = 0;
+            for (var i = 1; i < n; i++) {
+                while (N[start] < i * k) {
+                    start++;
+                    g1 += jStat.exponential.sample(b) * Math.exp(-Math.random() * miu * k);
+                }
+                var g = Math.exp(-miu * k);
+                x.push({
+                    a: i * k,
+                    b: g * x[i - 1].b + g1
+                });
+                g1 = 0;
+            }
+            return x;
+        }
+    }, {
+        key: "setParameter",
+        value: function setParameter(value, par) {
+            var obj = {};
+            obj[par] = value;
+            this.setState(obj);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var _props = this.props,
+                margin = _props.margin,
+                width = _props.width,
+                height = _props.height,
+                s = _props.s;
+            var data = this.state.data;
+
+            var h = height - 2 * margin,
+                w = width - 2 * margin;
+
+            //number formatter
+            var xFormat = d3.format('.5');
+
+            //x scale
+            var x = d3.scaleLinear().domain(d3.extent(data, function (d) {
+                return d.a;
+            })) //domain: [min,max] of a
+            .range([margin, w]);
+
+            //y scale
+            var y = d3.scaleLinear().domain([s === 0 ? 0 : d3.min(data, function (d) {
+                return d.b;
+            }), d3.max(data, function (d) {
+                return d.b;
+            })]) // domain [0,max] of b (start from 0)
+            .range([h, margin]);
+
+            //line generator: each point is [x(d.a), y(d.b)] where d is a row in data
+            // and x, y are scales (e.g. x(10) returns pixel value of 10 scaled by x)
+            var line = d3.line().x(function (d) {
+                return x(d.a);
+            }).y(function (d) {
+                return y(d.b);
+            });
+            //.curve(d3.curveCatmullRom.alpha(1)) //curve line
+
+            var xTicks = x.ticks(6).map(function (d) {
+                var _React$createElement;
+
+                return x(d) > margin && x(d) < w ? _react2.default.createElement(
+                    "g",
+                    { transform: "translate(" + x(d) + "," + (h + margin) + ")" },
+                    _react2.default.createElement(
+                        "text",
+                        null,
+                        xFormat(d)
+                    ),
+                    _react2.default.createElement("line", (_React$createElement = { x1: "0" }, _defineProperty(_React$createElement, "x1", "0"), _defineProperty(_React$createElement, "y1", "0"), _defineProperty(_React$createElement, "y2", "5"), _defineProperty(_React$createElement, "transform", "translate(0,-20)"), _React$createElement))
+                ) : null;
+            });
+
+            var yTicks = y.ticks(5).map(function (d) {
+                var _React$createElement2, _React$createElement3;
+
+                return y(d) > 10 && y(d) < h ? _react2.default.createElement(
+                    "g",
+                    { transform: "translate(" + margin + "," + y(d) + ")" },
+                    _react2.default.createElement(
+                        "text",
+                        { x: "-12", y: "5" },
+                        xFormat(d)
+                    ),
+                    _react2.default.createElement("line", (_React$createElement2 = { x1: "0" }, _defineProperty(_React$createElement2, "x1", "5"), _defineProperty(_React$createElement2, "y1", "0"), _defineProperty(_React$createElement2, "y2", "0"), _defineProperty(_React$createElement2, "transform", "translate(-5,0)"), _React$createElement2)),
+                    _react2.default.createElement("line", (_React$createElement3 = { className: "gridline", x1: "0" }, _defineProperty(_React$createElement3, "x1", w - margin), _defineProperty(_React$createElement3, "y1", "0"), _defineProperty(_React$createElement3, "y2", "0"), _defineProperty(_React$createElement3, "transform", "translate(-5,0)"), _React$createElement3))
+                ) : null;
+            });
+            var length = line(data).split(/M|L/).map(function (v) {
+                return v.split(",");
+            });
+            length.shift();
+            length = length.reduce(function (acc, v, i, arr) {
+                if (i === 0) {
+                    return acc;
+                } else {
+                    return acc + Math.sqrt((arr[i - 1][0] - v[0]) ** 2 + (arr[i - 1][1] - v[1]) ** 2);
+                }
+            }, 0);
+
+            return _react2.default.createElement(
+                "div",
+                { key: this.state.random },
+                _react2.default.createElement(
+                    "h1",
+                    null,
+                    "Proces Gamma Ornteina Uhlenbecka"
+                ),
+                _react2.default.createElement(
+                    "button",
+                    { onClick: function onClick() {
+                            return _this2.onClick();
+                        } },
+                    "Losuj"
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "config" },
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "a"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.a, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "a");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "b"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.b, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "b");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Liczba krok\xF3w"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.nOfSteps, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "nOfSteps");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "krok"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.stepSize, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "stepSize");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Intensywno\u015B\u0107"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.miu, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "miu");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Start"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.y, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "y");
+                            } })
+                    )
+                ),
+                _react2.default.createElement(
+                    "svg",
+                    { width: width, height: height },
+                    _react2.default.createElement("line", { className: "axis", x1: margin, x2: w, y1: h, y2: h }),
+                    _react2.default.createElement("line", { className: "axis", x1: margin, x2: margin, y1: margin, y2: h }),
+                    _react2.default.createElement("path", { id: "gammaOU", d: line(data) }),
+                    _react2.default.createElement(
+                        "g",
+                        { className: "axis-labels" },
+                        xTicks
+                    ),
+                    _react2.default.createElement(
+                        "g",
+                        { className: "axis-labels" },
+                        yTicks
+                    )
+                ),
+                _react2.default.createElement(
+                    "style",
+                    null,
+                    "\n              #gammaOU {\n                stroke-dasharray: " + length + ";\n                stroke-dashoffset: " + length + ";\n                animation: drawWiener 2s ease-in forwards;\n              }\n              \n              @keyframes drawGammaOU {\n                  to {\n                  stroke-dashoffset: 0;\n                  }\n              }\n            "
+                )
+            );
+        }
+    }]);
+
+    return GammaOU;
+}(_react2.default.Component);
+
+exports.default = GammaOU;
+},{"d3":44,"jstat":45,"react":54}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -807,12 +1115,12 @@ var GeoBrownian = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (GeoBrownian.__proto__ || Object.getPrototypeOf(GeoBrownian)).call(this, props));
 
         _this.state = {
-            data: _this.GeoBrownian(100, 0.05, 0.2, 5000, 0.01),
-            nOfSteps: 1000,
-            stepSize: 0.1,
+            data: _this.GeoBrownian(100, 0.05, 0.25, 5000, 0.01),
+            nOfSteps: 5000,
+            stepSize: 0.01,
             S: 100,
             miu: 0.05,
-            sigma: 0.1,
+            sigma: 0.25,
             random: 0
         };
         return _this;
@@ -964,7 +1272,7 @@ var GeoBrownian = function (_React$Component) {
                             null,
                             'Liczba krok\xF3w'
                         ),
-                        _react2.default.createElement('textarea', { onChange: function onChange(e) {
+                        _react2.default.createElement('textarea', { value: this.state.nOfSteps, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "nOfSteps");
                             } })
                     ),
@@ -976,8 +1284,8 @@ var GeoBrownian = function (_React$Component) {
                             null,
                             'krok'
                         ),
-                        _react2.default.createElement('textarea', { onChange: function onChange(e) {
-                                return _this2.setParameter(e.target.value, "step");
+                        _react2.default.createElement('textarea', { value: this.state.stepSize, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "stepSize");
                             } })
                     ),
                     _react2.default.createElement(
@@ -988,7 +1296,7 @@ var GeoBrownian = function (_React$Component) {
                             null,
                             'cena pocz\u0105tkowa'
                         ),
-                        _react2.default.createElement('textarea', { onChange: function onChange(e) {
+                        _react2.default.createElement('textarea', { value: this.state.S, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "S");
                             } })
                     ),
@@ -1000,7 +1308,7 @@ var GeoBrownian = function (_React$Component) {
                             null,
                             'stopa zwrotu'
                         ),
-                        _react2.default.createElement('textarea', { onChange: function onChange(e) {
+                        _react2.default.createElement('textarea', { value: this.state.miu, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "miu");
                             } })
                     ),
@@ -1012,7 +1320,7 @@ var GeoBrownian = function (_React$Component) {
                             null,
                             'sigma'
                         ),
-                        _react2.default.createElement('textarea', { onChange: function onChange(e) {
+                        _react2.default.createElement('textarea', { value: this.state.sigma, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "sigma");
                             } })
                     )
@@ -1047,7 +1355,618 @@ var GeoBrownian = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = GeoBrownian;
-},{"d3":40,"react":50}],6:[function(require,module,exports){
+},{"d3":44,"react":54}],7:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _d = require("d3");
+
+var d3 = _interopRequireWildcard(_d);
+
+var _jstat = require("jstat");
+
+var jStat = _interopRequireWildcard(_jstat);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var InverseWienerOU = function (_React$Component) {
+    _inherits(InverseWienerOU, _React$Component);
+
+    function InverseWienerOU(props) {
+        _classCallCheck(this, InverseWienerOU);
+
+        var _this = _possibleConstructorReturn(this, (InverseWienerOU.__proto__ || Object.getPrototypeOf(InverseWienerOU)).call(this, props));
+
+        _this.state = {
+            data: _this.InverseWienerOU(500, 0.01, 1.5, 12, 2, 0.08),
+            nOfSteps: 500,
+            stepSize: 0.01,
+            a: 1.5,
+            b: 12,
+            miu: 2,
+            y: 0.08,
+            random: 0
+        };
+        return _this;
+    }
+
+    _createClass(InverseWienerOU, [{
+        key: "onClick",
+        value: function onClick() {
+            var _state = this.state,
+                a = _state.a,
+                b = _state.b,
+                nOfSteps = _state.nOfSteps,
+                stepSize = _state.stepSize,
+                miu = _state.miu,
+                y = _state.y;
+
+            this.setState({ random: Math.random() });
+            this.setState({ data: this.InverseWienerOU(nOfSteps, stepSize, a, b, miu, y) });
+        }
+    }, {
+        key: "InverseWienerOU",
+        value: function InverseWienerOU(n, k, a, b, miu, y) {
+            var v = [{
+                a: 0,
+                b: y
+            }];
+            var s = 0;
+            var N = [];
+            while (s < n * k) {
+                N.push(s);
+                s += -Math.log(Math.random()) / (a * b * miu / 2);
+            }
+            var start = 1;
+            var g1 = 0;
+            for (var i = 1; i < n; i++) {
+                var ni = jStat.normal.sample(0, 1);
+                var _y = ni ** 2;
+                var x = a / 2 * k / b + _y / (2 * b ** 2) - Math.sqrt(2 * a * k * b * _y + _y ** 2) / (2 * b ** 2);
+                var u = Math.random();
+                var ig = u <= a / 2 * k / (a / 2 * k + b * x) ? x : (a / 2 * k) ** 2 / (b ** 2 * x);
+                while (N[start] < i * k) {
+                    start++;
+                    g1 += jStat.normal.sample(0, 1) ** 2 / b;
+                }
+                v.push({
+                    a: i * k,
+                    b: (ig + g1 + v[i - 1].b) * Math.exp(-miu * k)
+                });
+                g1 = 0;
+            }
+            return v;
+        }
+    }, {
+        key: "setParameter",
+        value: function setParameter(value, par) {
+            var obj = {};
+            obj[par] = value;
+            this.setState(obj);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var _props = this.props,
+                margin = _props.margin,
+                width = _props.width,
+                height = _props.height,
+                s = _props.s;
+            var data = this.state.data;
+
+            var h = height - 2 * margin,
+                w = width - 2 * margin;
+
+            //number formatter
+            var xFormat = d3.format('.5');
+
+            //x scale
+            var x = d3.scaleLinear().domain(d3.extent(data, function (d) {
+                return d.a;
+            })) //domain: [min,max] of a
+            .range([margin, w]);
+
+            //y scale
+            var y = d3.scaleLinear().domain([s === 0 ? 0 : d3.min(data, function (d) {
+                return d.b;
+            }), d3.max(data, function (d) {
+                return d.b;
+            })]) // domain [0,max] of b (start from 0)
+            .range([h, margin]);
+
+            //line generator: each point is [x(d.a), y(d.b)] where d is a row in data
+            // and x, y are scales (e.g. x(10) returns pixel value of 10 scaled by x)
+            var line = d3.line().x(function (d) {
+                return x(d.a);
+            }).y(function (d) {
+                return y(d.b);
+            });
+            //.curve(d3.curveCatmullRom.alpha(1)) //curve line
+
+            var xTicks = x.ticks(6).map(function (d) {
+                var _React$createElement;
+
+                return x(d) > margin && x(d) < w ? _react2.default.createElement(
+                    "g",
+                    { transform: "translate(" + x(d) + "," + (h + margin) + ")" },
+                    _react2.default.createElement(
+                        "text",
+                        null,
+                        xFormat(d)
+                    ),
+                    _react2.default.createElement("line", (_React$createElement = { x1: "0" }, _defineProperty(_React$createElement, "x1", "0"), _defineProperty(_React$createElement, "y1", "0"), _defineProperty(_React$createElement, "y2", "5"), _defineProperty(_React$createElement, "transform", "translate(0,-20)"), _React$createElement))
+                ) : null;
+            });
+
+            var yTicks = y.ticks(5).map(function (d) {
+                var _React$createElement2, _React$createElement3;
+
+                return y(d) > 10 && y(d) < h ? _react2.default.createElement(
+                    "g",
+                    { transform: "translate(" + margin + "," + y(d) + ")" },
+                    _react2.default.createElement(
+                        "text",
+                        { x: "-12", y: "5" },
+                        xFormat(d)
+                    ),
+                    _react2.default.createElement("line", (_React$createElement2 = { x1: "0" }, _defineProperty(_React$createElement2, "x1", "5"), _defineProperty(_React$createElement2, "y1", "0"), _defineProperty(_React$createElement2, "y2", "0"), _defineProperty(_React$createElement2, "transform", "translate(-5,0)"), _React$createElement2)),
+                    _react2.default.createElement("line", (_React$createElement3 = { className: "gridline", x1: "0" }, _defineProperty(_React$createElement3, "x1", w - margin), _defineProperty(_React$createElement3, "y1", "0"), _defineProperty(_React$createElement3, "y2", "0"), _defineProperty(_React$createElement3, "transform", "translate(-5,0)"), _React$createElement3))
+                ) : null;
+            });
+            var length = line(data).split(/M|L/).map(function (v) {
+                return v.split(",");
+            });
+            length.shift();
+            length = length.reduce(function (acc, v, i, arr) {
+                if (i === 0) {
+                    return acc;
+                } else {
+                    return acc + Math.sqrt((arr[i - 1][0] - v[0]) ** 2 + (arr[i - 1][1] - v[1]) ** 2);
+                }
+            }, 0);
+
+            return _react2.default.createElement(
+                "div",
+                { key: this.state.random },
+                _react2.default.createElement(
+                    "h1",
+                    null,
+                    "Odwr\xF3cony Gausowski Proces Ornsteina Uhlenbecka"
+                ),
+                _react2.default.createElement(
+                    "button",
+                    { onClick: function onClick() {
+                            return _this2.onClick();
+                        } },
+                    "Losuj"
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "config" },
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "a"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.a, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "a");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "b"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.b, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "b");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Liczba krok\xF3w"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.nOfSteps, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "nOfSteps");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "krok"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.stepSize, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "stepSize");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Intensywno\u015B\u0107"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.miu, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "miu");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Start"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.y, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "y");
+                            } })
+                    )
+                ),
+                _react2.default.createElement(
+                    "svg",
+                    { width: width, height: height },
+                    _react2.default.createElement("line", { className: "axis", x1: margin, x2: w, y1: h, y2: h }),
+                    _react2.default.createElement("line", { className: "axis", x1: margin, x2: margin, y1: margin, y2: h }),
+                    _react2.default.createElement("path", { id: "inverseWienerOU", d: line(data) }),
+                    _react2.default.createElement(
+                        "g",
+                        { className: "axis-labels" },
+                        xTicks
+                    ),
+                    _react2.default.createElement(
+                        "g",
+                        { className: "axis-labels" },
+                        yTicks
+                    )
+                ),
+                _react2.default.createElement(
+                    "style",
+                    null,
+                    "\n              #inverseWienerOU {\n                stroke-dasharray: " + length + ";\n                stroke-dashoffset: " + length + ";\n                animation: drawInverseWienerOU 2s ease-in forwards;\n              }\n              \n              @keyframes drawInverseWienerOU {\n                  to {\n                  stroke-dashoffset: 0;\n                  }\n              }\n            "
+                )
+            );
+        }
+    }]);
+
+    return InverseWienerOU;
+}(_react2.default.Component);
+
+exports.default = InverseWienerOU;
+},{"d3":44,"jstat":45,"react":54}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _d = require("d3");
+
+var d3 = _interopRequireWildcard(_d);
+
+var _jstat = require("jstat");
+
+var jStat = _interopRequireWildcard(_jstat);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var InverseWiener = function (_React$Component) {
+    _inherits(InverseWiener, _React$Component);
+
+    function InverseWiener(props) {
+        _classCallCheck(this, InverseWiener);
+
+        var _this = _possibleConstructorReturn(this, (InverseWiener.__proto__ || Object.getPrototypeOf(InverseWiener)).call(this, props));
+
+        _this.state = {
+            data: _this.InverseWiener(5000, 0.01, 0.2, 1, 0.22, 0),
+            nOfSteps: 5000,
+            stepSize: 0.01,
+            a: 0.2,
+            b: 1,
+            miu: 0.22,
+            shifted: 0,
+            random: 0
+        };
+        return _this;
+    }
+
+    _createClass(InverseWiener, [{
+        key: "onClick",
+        value: function onClick() {
+            var _state = this.state,
+                a = _state.a,
+                b = _state.b,
+                nOfSteps = _state.nOfSteps,
+                stepSize = _state.stepSize,
+                miu = _state.miu,
+                shifted = _state.shifted;
+
+            this.setState({ random: Math.random() });
+            this.setState({ data: this.InverseWiener(nOfSteps, stepSize, a, b, miu, Number(shifted)) });
+        }
+    }, {
+        key: "InverseWiener",
+        value: function InverseWiener(n, k, a, b, miu, shifted) {
+            var v = [{
+                a: 0,
+                b: 0
+            }];
+            for (var i = 1; i < n; i++) {
+                var ni = jStat.normal.sample(0, 1);
+                var y = ni ** 2;
+                var x = a * k / b + y / (2 * b ** 2) - Math.sqrt(4 * a * k * b * y + y ** 2) / (2 * b ** 2);
+                var u = Math.random();
+                var ig = u <= a * k / (a * k + b * x) ? x : (a * k) ** 2 / (b ** 2 * x);
+                v.push({
+                    a: i * k,
+                    b: shifted ? miu * k - ig + v[i - 1].b : ig + v[i - 1].b
+                });
+            }
+            return v;
+        }
+    }, {
+        key: "setParameter",
+        value: function setParameter(value, par) {
+            var obj = {};
+            obj[par] = value;
+            this.setState(obj);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var _props = this.props,
+                margin = _props.margin,
+                width = _props.width,
+                height = _props.height,
+                s = _props.s;
+            var data = this.state.data;
+
+            var h = height - 2 * margin,
+                w = width - 2 * margin;
+
+            //number formatter
+            var xFormat = d3.format('.5');
+
+            //x scale
+            var x = d3.scaleLinear().domain(d3.extent(data, function (d) {
+                return d.a;
+            })) //domain: [min,max] of a
+            .range([margin, w]);
+
+            //y scale
+            var y = d3.scaleLinear().domain([s === 0 ? 0 : d3.min(data, function (d) {
+                return d.b;
+            }), d3.max(data, function (d) {
+                return d.b;
+            })]) // domain [0,max] of b (start from 0)
+            .range([h, margin]);
+
+            //line generator: each point is [x(d.a), y(d.b)] where d is a row in data
+            // and x, y are scales (e.g. x(10) returns pixel value of 10 scaled by x)
+            var line = d3.line().x(function (d) {
+                return x(d.a);
+            }).y(function (d) {
+                return y(d.b);
+            });
+            //.curve(d3.curveCatmullRom.alpha(1)) //curve line
+
+            var xTicks = x.ticks(6).map(function (d) {
+                var _React$createElement;
+
+                return x(d) > margin && x(d) < w ? _react2.default.createElement(
+                    "g",
+                    { transform: "translate(" + x(d) + "," + (h + margin) + ")" },
+                    _react2.default.createElement(
+                        "text",
+                        null,
+                        xFormat(d)
+                    ),
+                    _react2.default.createElement("line", (_React$createElement = { x1: "0" }, _defineProperty(_React$createElement, "x1", "0"), _defineProperty(_React$createElement, "y1", "0"), _defineProperty(_React$createElement, "y2", "5"), _defineProperty(_React$createElement, "transform", "translate(0,-20)"), _React$createElement))
+                ) : null;
+            });
+
+            var yTicks = y.ticks(5).map(function (d) {
+                var _React$createElement2, _React$createElement3;
+
+                return y(d) > 10 && y(d) < h ? _react2.default.createElement(
+                    "g",
+                    { transform: "translate(" + margin + "," + y(d) + ")" },
+                    _react2.default.createElement(
+                        "text",
+                        { x: "-12", y: "5" },
+                        xFormat(d)
+                    ),
+                    _react2.default.createElement("line", (_React$createElement2 = { x1: "0" }, _defineProperty(_React$createElement2, "x1", "5"), _defineProperty(_React$createElement2, "y1", "0"), _defineProperty(_React$createElement2, "y2", "0"), _defineProperty(_React$createElement2, "transform", "translate(-5,0)"), _React$createElement2)),
+                    _react2.default.createElement("line", (_React$createElement3 = { className: "gridline", x1: "0" }, _defineProperty(_React$createElement3, "x1", w - margin), _defineProperty(_React$createElement3, "y1", "0"), _defineProperty(_React$createElement3, "y2", "0"), _defineProperty(_React$createElement3, "transform", "translate(-5,0)"), _React$createElement3))
+                ) : null;
+            });
+            var length = line(data).split(/M|L/).map(function (v) {
+                return v.split(",");
+            });
+            length.shift();
+            length = length.reduce(function (acc, v, i, arr) {
+                if (i === 0) {
+                    return acc;
+                } else {
+                    return acc + Math.sqrt((arr[i - 1][0] - v[0]) ** 2 + (arr[i - 1][1] - v[1]) ** 2);
+                }
+            }, 0);
+
+            return _react2.default.createElement(
+                "div",
+                { key: this.state.random },
+                _react2.default.createElement(
+                    "h1",
+                    null,
+                    "Odwr\xF3cony Proces Wienera (z przesuni\u0119ciem)"
+                ),
+                _react2.default.createElement(
+                    "button",
+                    { onClick: function onClick() {
+                            return _this2.onClick();
+                        } },
+                    "Losuj"
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "config" },
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "a"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.a, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "a");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "b"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.b, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "b");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Liczba krok\xF3w"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.nOfSteps, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "nOfSteps");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "krok"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.stepSize, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "stepSize");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "\u015Arednia"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.miu, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "miu");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Przesuni\u0119ty"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.shifted, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "shifted");
+                            } })
+                    )
+                ),
+                _react2.default.createElement(
+                    "svg",
+                    { width: width, height: height },
+                    _react2.default.createElement("line", { className: "axis", x1: margin, x2: w, y1: h, y2: h }),
+                    _react2.default.createElement("line", { className: "axis", x1: margin, x2: margin, y1: margin, y2: h }),
+                    _react2.default.createElement("path", { id: "inverseWiener", d: line(data) }),
+                    _react2.default.createElement(
+                        "g",
+                        { className: "axis-labels" },
+                        xTicks
+                    ),
+                    _react2.default.createElement(
+                        "g",
+                        { className: "axis-labels" },
+                        yTicks
+                    )
+                ),
+                _react2.default.createElement(
+                    "style",
+                    null,
+                    "\n              #inverseWiener {\n                stroke-dasharray: " + length + ";\n                stroke-dashoffset: " + length + ";\n                animation: drawInverseWiener 2s ease-in forwards;\n              }\n              \n              @keyframes drawInverseWiener {\n                  to {\n                  stroke-dashoffset: 0;\n                  }\n              }\n            "
+                )
+            );
+        }
+    }]);
+
+    return InverseWiener;
+}(_react2.default.Component);
+
+exports.default = InverseWiener;
+},{"d3":44,"jstat":45,"react":54}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1234,7 +2153,7 @@ var Poisson = function (_React$Component) {
                             null,
                             "Liczba skok\xF3w"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.nOfJumps, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "nOfJumps");
                             } })
                     ),
@@ -1246,7 +2165,7 @@ var Poisson = function (_React$Component) {
                             null,
                             "Lambda"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.lambda, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "lambda");
                             } })
                     )
@@ -1281,7 +2200,7 @@ var Poisson = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Poisson;
-},{"d3":40,"react":50}],7:[function(require,module,exports){
+},{"d3":44,"react":54}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1314,6 +2233,22 @@ var _Gamma = require("./Gamma");
 
 var _Gamma2 = _interopRequireDefault(_Gamma);
 
+var _VarGamma = require("./VarGamma");
+
+var _VarGamma2 = _interopRequireDefault(_VarGamma);
+
+var _InverseWiener = require("./InverseWiener");
+
+var _InverseWiener2 = _interopRequireDefault(_InverseWiener);
+
+var _GammaOU = require("./GammaOU");
+
+var _GammaOU2 = _interopRequireDefault(_GammaOU);
+
+var _InverseOU = require("./InverseOU");
+
+var _InverseOU2 = _interopRequireDefault(_InverseOU);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1345,6 +2280,10 @@ var Processes = function (_React$Component) {
         _react2.default.createElement(_Poisson2.default, { width: width, height: height, margin: margin }),
         _react2.default.createElement(_CompPoisson2.default, { width: width, height: height, margin: margin }),
         _react2.default.createElement(_Gamma2.default, { width: width, height: height, margin: margin }),
+        _react2.default.createElement(_InverseWiener2.default, { width: width, height: height, margin: margin }),
+        _react2.default.createElement(_VarGamma2.default, { width: width, height: height, margin: margin }),
+        _react2.default.createElement(_GammaOU2.default, { width: width, height: height, margin: margin }),
+        _react2.default.createElement(_InverseOU2.default, { width: width, height: height, margin: margin }),
         _react2.default.createElement(
           "style",
           null,
@@ -1358,7 +2297,289 @@ var Processes = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Processes;
-},{"./CompPoisson":3,"./Gamma":4,"./GeoBrownian":5,"./Poisson":6,"./Wiener":8,"react":50}],8:[function(require,module,exports){
+},{"./CompPoisson":3,"./Gamma":4,"./GammaOU":5,"./GeoBrownian":6,"./InverseOU":7,"./InverseWiener":8,"./Poisson":9,"./VarGamma":11,"./Wiener":12,"react":54}],11:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _d = require("d3");
+
+var d3 = _interopRequireWildcard(_d);
+
+var _jstat = require("jstat");
+
+var jStat = _interopRequireWildcard(_jstat);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var VarGamma = function (_React$Component) {
+    _inherits(VarGamma, _React$Component);
+
+    function VarGamma(props) {
+        _classCallCheck(this, VarGamma);
+
+        var _this = _possibleConstructorReturn(this, (VarGamma.__proto__ || Object.getPrototypeOf(VarGamma)).call(this, props));
+
+        _this.state = {
+            data: _this.VarGamma(5000, 0.01, 1, 1, 1),
+            nOfSteps: 5000,
+            stepSize: 0.01,
+            C: 1,
+            G: 1,
+            M: 1,
+            random: 0
+        };
+        return _this;
+    }
+
+    _createClass(VarGamma, [{
+        key: "onClick",
+        value: function onClick() {
+            var _state = this.state,
+                C = _state.C,
+                G = _state.G,
+                M = _state.M,
+                nOfSteps = _state.nOfSteps,
+                stepSize = _state.stepSize;
+
+            this.setState({ random: Math.random() });
+            this.setState({ data: this.VarGamma(nOfSteps, stepSize, C, G, M) });
+        }
+    }, {
+        key: "VarGamma",
+        value: function VarGamma(n, k, C, G, M) {
+            var x = [{
+                a: 0,
+                b: 0
+            }];
+            for (var i = 1; i < n; i++) {
+                var g1 = jStat.gamma.sample(C * k, M);
+                var g2 = jStat.gamma.sample(C * k, G);
+                x.push({
+                    a: i * k,
+                    b: g1 - g2 + x[i - 1].b
+                });
+            }
+            return x;
+        }
+    }, {
+        key: "setParameter",
+        value: function setParameter(value, par) {
+            var obj = {};
+            obj[par] = value;
+            this.setState(obj);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var _props = this.props,
+                margin = _props.margin,
+                width = _props.width,
+                height = _props.height,
+                s = _props.s;
+            var data = this.state.data;
+
+            var h = height - 2 * margin,
+                w = width - 2 * margin;
+
+            //number formatter
+            var xFormat = d3.format('.5');
+
+            //x scale
+            var x = d3.scaleLinear().domain(d3.extent(data, function (d) {
+                return d.a;
+            })) //domain: [min,max] of a
+            .range([margin, w]);
+
+            //y scale
+            var y = d3.scaleLinear().domain([s === 0 ? 0 : d3.min(data, function (d) {
+                return d.b;
+            }), d3.max(data, function (d) {
+                return d.b;
+            })]) // domain [0,max] of b (start from 0)
+            .range([h, margin]);
+
+            //line generator: each point is [x(d.a), y(d.b)] where d is a row in data
+            // and x, y are scales (e.g. x(10) returns pixel value of 10 scaled by x)
+            var line = d3.line().x(function (d) {
+                return x(d.a);
+            }).y(function (d) {
+                return y(d.b);
+            });
+            //.curve(d3.curveCatmullRom.alpha(1)) //curve line
+
+            var xTicks = x.ticks(6).map(function (d) {
+                var _React$createElement;
+
+                return x(d) > margin && x(d) < w ? _react2.default.createElement(
+                    "g",
+                    { transform: "translate(" + x(d) + "," + (h + margin) + ")" },
+                    _react2.default.createElement(
+                        "text",
+                        null,
+                        xFormat(d)
+                    ),
+                    _react2.default.createElement("line", (_React$createElement = { x1: "0" }, _defineProperty(_React$createElement, "x1", "0"), _defineProperty(_React$createElement, "y1", "0"), _defineProperty(_React$createElement, "y2", "5"), _defineProperty(_React$createElement, "transform", "translate(0,-20)"), _React$createElement))
+                ) : null;
+            });
+
+            var yTicks = y.ticks(5).map(function (d) {
+                var _React$createElement2, _React$createElement3;
+
+                return y(d) > 10 && y(d) < h ? _react2.default.createElement(
+                    "g",
+                    { transform: "translate(" + margin + "," + y(d) + ")" },
+                    _react2.default.createElement(
+                        "text",
+                        { x: "-12", y: "5" },
+                        xFormat(d)
+                    ),
+                    _react2.default.createElement("line", (_React$createElement2 = { x1: "0" }, _defineProperty(_React$createElement2, "x1", "5"), _defineProperty(_React$createElement2, "y1", "0"), _defineProperty(_React$createElement2, "y2", "0"), _defineProperty(_React$createElement2, "transform", "translate(-5,0)"), _React$createElement2)),
+                    _react2.default.createElement("line", (_React$createElement3 = { className: "gridline", x1: "0" }, _defineProperty(_React$createElement3, "x1", w - margin), _defineProperty(_React$createElement3, "y1", "0"), _defineProperty(_React$createElement3, "y2", "0"), _defineProperty(_React$createElement3, "transform", "translate(-5,0)"), _React$createElement3))
+                ) : null;
+            });
+            var length = line(data).split(/M|L/).map(function (v) {
+                return v.split(",");
+            });
+            length.shift();
+            length = length.reduce(function (acc, v, i, arr) {
+                if (i === 0) {
+                    return acc;
+                } else {
+                    return acc + Math.sqrt((arr[i - 1][0] - v[0]) ** 2 + (arr[i - 1][1] - v[1]) ** 2);
+                }
+            }, 0);
+
+            return _react2.default.createElement(
+                "div",
+                { key: this.state.random },
+                _react2.default.createElement(
+                    "h1",
+                    null,
+                    "Proces VG"
+                ),
+                _react2.default.createElement(
+                    "button",
+                    { onClick: function onClick() {
+                            return _this2.onClick();
+                        } },
+                    "Losuj"
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "config" },
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "C"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.C, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "C");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "G"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.G, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "G");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "M"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.M, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "M");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Liczba krok\xF3w"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.nOfSteps, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "nOfSteps");
+                            } })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "krok"
+                        ),
+                        _react2.default.createElement("textarea", { value: this.state.stepSize, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "stepSize");
+                            } })
+                    )
+                ),
+                _react2.default.createElement(
+                    "svg",
+                    { width: width, height: height },
+                    _react2.default.createElement("line", { className: "axis", x1: margin, x2: w, y1: h, y2: h }),
+                    _react2.default.createElement("line", { className: "axis", x1: margin, x2: margin, y1: margin, y2: h }),
+                    _react2.default.createElement("path", { id: "varGamma", d: line(data) }),
+                    _react2.default.createElement(
+                        "g",
+                        { className: "axis-labels" },
+                        xTicks
+                    ),
+                    _react2.default.createElement(
+                        "g",
+                        { className: "axis-labels" },
+                        yTicks
+                    )
+                ),
+                _react2.default.createElement(
+                    "style",
+                    null,
+                    "\n              #varGamma {\n                stroke-dasharray: " + length + ";\n                stroke-dashoffset: " + length + ";\n                animation: drawWiener 2s ease-in forwards;\n              }\n              \n              @keyframes drawVarGamma {\n                  to {\n                  stroke-dashoffset: 0;\n                  }\n              }\n            "
+                )
+            );
+        }
+    }]);
+
+    return VarGamma;
+}(_react2.default.Component);
+
+exports.default = VarGamma;
+},{"d3":44,"jstat":45,"react":54}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1397,8 +2618,8 @@ var Wiener = function (_React$Component) {
 
         _this.state = {
             data: _this.Wiener(5000, 0.01),
-            nOfSteps: 1000,
-            stepSize: 0.1,
+            nOfSteps: 5000,
+            stepSize: 0.01,
             random: 0
         };
         return _this;
@@ -1544,7 +2765,7 @@ var Wiener = function (_React$Component) {
                             null,
                             "Liczba krok\xF3w"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
+                        _react2.default.createElement("textarea", { value: this.state.nOfSteps, onChange: function onChange(e) {
                                 return _this2.setParameter(e.target.value, "nOfSteps");
                             } })
                     ),
@@ -1556,8 +2777,8 @@ var Wiener = function (_React$Component) {
                             null,
                             "krok"
                         ),
-                        _react2.default.createElement("textarea", { onChange: function onChange(e) {
-                                return _this2.setParameter(e.target.value, "step");
+                        _react2.default.createElement("textarea", { value: this.state.stepSize, onChange: function onChange(e) {
+                                return _this2.setParameter(e.target.value, "stepSize");
                             } })
                     )
                 ),
@@ -1591,7 +2812,7 @@ var Wiener = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Wiener;
-},{"d3":40,"react":50}],9:[function(require,module,exports){
+},{"d3":44,"react":54}],13:[function(require,module,exports){
 // https://d3js.org/d3-array/ v1.2.4 Copyright 2018 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -2183,7 +3404,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],10:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 // https://d3js.org/d3-axis/ v1.0.12 Copyright 2018 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -2378,7 +3599,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],11:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 // https://d3js.org/d3-brush/ v1.1.5 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-dispatch'), require('d3-drag'), require('d3-interpolate'), require('d3-selection'), require('d3-transition')) :
@@ -2997,7 +4218,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{"d3-dispatch":16,"d3-drag":17,"d3-interpolate":25,"d3-selection":32,"d3-transition":37}],12:[function(require,module,exports){
+},{"d3-dispatch":20,"d3-drag":21,"d3-interpolate":29,"d3-selection":36,"d3-transition":41}],16:[function(require,module,exports){
 // https://d3js.org/d3-chord/ v1.0.6 Copyright 2018 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-array'), require('d3-path')) :
@@ -3229,7 +4450,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{"d3-array":9,"d3-path":26}],13:[function(require,module,exports){
+},{"d3-array":13,"d3-path":30}],17:[function(require,module,exports){
 // https://d3js.org/d3-collection/ v1.0.7 Copyright 2018 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -3448,7 +4669,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],14:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 // https://d3js.org/d3-color/ v1.4.0 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -4031,7 +5252,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],15:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 // https://d3js.org/d3-contour/ v1.3.2 Copyright 2018 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-array')) :
@@ -4464,7 +5685,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{"d3-array":9}],16:[function(require,module,exports){
+},{"d3-array":13}],20:[function(require,module,exports){
 // https://d3js.org/d3-dispatch/ v1.0.6 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -4561,7 +5782,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],17:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 // https://d3js.org/d3-drag/ v1.2.5 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-dispatch'), require('d3-selection')) :
@@ -4797,7 +6018,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{"d3-dispatch":16,"d3-selection":32}],18:[function(require,module,exports){
+},{"d3-dispatch":20,"d3-selection":36}],22:[function(require,module,exports){
 // https://d3js.org/d3-dsv/ v1.2.0 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -5032,7 +6253,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],19:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 // https://d3js.org/d3-ease/ v1.0.6 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -5293,7 +6514,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],20:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 // https://d3js.org/d3-fetch/ v1.1.2 Copyright 2018 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-dsv')) :
@@ -5397,7 +6618,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{"d3-dsv":18}],21:[function(require,module,exports){
+},{"d3-dsv":22}],25:[function(require,module,exports){
 // https://d3js.org/d3-force/ v1.2.1 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-quadtree'), require('d3-collection'), require('d3-dispatch'), require('d3-timer')) :
@@ -6067,7 +7288,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{"d3-collection":13,"d3-dispatch":16,"d3-quadtree":28,"d3-timer":36}],22:[function(require,module,exports){
+},{"d3-collection":17,"d3-dispatch":20,"d3-quadtree":32,"d3-timer":40}],26:[function(require,module,exports){
 // https://d3js.org/d3-format/ v1.4.3 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -6407,7 +7628,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],23:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 // https://d3js.org/d3-geo/ v1.11.9 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-array')) :
@@ -9535,7 +10756,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{"d3-array":9}],24:[function(require,module,exports){
+},{"d3-array":13}],28:[function(require,module,exports){
 // https://d3js.org/d3-hierarchy/ v1.1.9 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -10827,7 +12048,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],25:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 // https://d3js.org/d3-interpolate/ v1.4.0 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-color')) :
@@ -11422,7 +12643,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{"d3-color":14}],26:[function(require,module,exports){
+},{"d3-color":18}],30:[function(require,module,exports){
 // https://d3js.org/d3-path/ v1.0.9 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -11565,7 +12786,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],27:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 // https://d3js.org/d3-polygon/ v1.0.6 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -11717,7 +12938,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],28:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 // https://d3js.org/d3-quadtree/ v1.0.7 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -12138,7 +13359,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],29:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 // https://d3js.org/d3-random/ v1.1.2 Copyright 2018 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -12255,7 +13476,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],30:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 // https://d3js.org/d3-scale-chromatic/ v1.5.0 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-interpolate'), require('d3-color')) :
@@ -12778,7 +13999,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{"d3-color":14,"d3-interpolate":25}],31:[function(require,module,exports){
+},{"d3-color":18,"d3-interpolate":29}],35:[function(require,module,exports){
 // https://d3js.org/d3-scale/ v2.2.2 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-collection'), require('d3-array'), require('d3-interpolate'), require('d3-format'), require('d3-time'), require('d3-time-format')) :
@@ -13945,7 +15166,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{"d3-array":9,"d3-collection":13,"d3-format":22,"d3-interpolate":25,"d3-time":35,"d3-time-format":34}],32:[function(require,module,exports){
+},{"d3-array":13,"d3-collection":17,"d3-format":26,"d3-interpolate":29,"d3-time":39,"d3-time-format":38}],36:[function(require,module,exports){
 // https://d3js.org/d3-selection/ v1.4.1 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -14936,7 +16157,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],33:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 // https://d3js.org/d3-shape/ v1.3.7 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-path')) :
@@ -16887,7 +18108,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{"d3-path":26}],34:[function(require,module,exports){
+},{"d3-path":30}],38:[function(require,module,exports){
 // https://d3js.org/d3-time-format/ v2.2.3 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-time')) :
@@ -17596,7 +18817,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{"d3-time":35}],35:[function(require,module,exports){
+},{"d3-time":39}],39:[function(require,module,exports){
 // https://d3js.org/d3-time/ v1.1.0 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -17971,7 +19192,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],36:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 // https://d3js.org/d3-timer/ v1.0.10 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -18122,7 +19343,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{}],37:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 // https://d3js.org/d3-transition/ v1.3.2 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-selection'), require('d3-dispatch'), require('d3-timer'), require('d3-interpolate'), require('d3-color'), require('d3-ease')) :
@@ -19004,7 +20225,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{"d3-color":14,"d3-dispatch":16,"d3-ease":19,"d3-interpolate":25,"d3-selection":32,"d3-timer":36}],38:[function(require,module,exports){
+},{"d3-color":18,"d3-dispatch":20,"d3-ease":23,"d3-interpolate":29,"d3-selection":36,"d3-timer":40}],42:[function(require,module,exports){
 // https://d3js.org/d3-voronoi/ v1.1.4 Copyright 2018 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -20005,7 +21226,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],39:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 // https://d3js.org/d3-zoom/ v1.8.3 Copyright 2019 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-dispatch'), require('d3-drag'), require('d3-interpolate'), require('d3-selection'), require('d3-transition')) :
@@ -20504,7 +21725,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 
-},{"d3-dispatch":16,"d3-drag":17,"d3-interpolate":25,"d3-selection":32,"d3-transition":37}],40:[function(require,module,exports){
+},{"d3-dispatch":20,"d3-drag":21,"d3-interpolate":29,"d3-selection":36,"d3-transition":41}],44:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -20793,7 +22014,7 @@ Object.keys(d3Zoom).forEach(function (k) {
 });
 exports.version = version;
 
-},{"d3-array":9,"d3-axis":10,"d3-brush":11,"d3-chord":12,"d3-collection":13,"d3-color":14,"d3-contour":15,"d3-dispatch":16,"d3-drag":17,"d3-dsv":18,"d3-ease":19,"d3-fetch":20,"d3-force":21,"d3-format":22,"d3-geo":23,"d3-hierarchy":24,"d3-interpolate":25,"d3-path":26,"d3-polygon":27,"d3-quadtree":28,"d3-random":29,"d3-scale":31,"d3-scale-chromatic":30,"d3-selection":32,"d3-shape":33,"d3-time":35,"d3-time-format":34,"d3-timer":36,"d3-transition":37,"d3-voronoi":38,"d3-zoom":39}],41:[function(require,module,exports){
+},{"d3-array":13,"d3-axis":14,"d3-brush":15,"d3-chord":16,"d3-collection":17,"d3-color":18,"d3-contour":19,"d3-dispatch":20,"d3-drag":21,"d3-dsv":22,"d3-ease":23,"d3-fetch":24,"d3-force":25,"d3-format":26,"d3-geo":27,"d3-hierarchy":28,"d3-interpolate":29,"d3-path":30,"d3-polygon":31,"d3-quadtree":32,"d3-random":33,"d3-scale":35,"d3-scale-chromatic":34,"d3-selection":36,"d3-shape":37,"d3-time":39,"d3-time-format":38,"d3-timer":40,"d3-transition":41,"d3-voronoi":42,"d3-zoom":43}],45:[function(require,module,exports){
 (function (window, factory) {
     if (typeof exports === 'object') {
         module.exports = factory();
@@ -25784,7 +27005,7 @@ jStat.extend({
   return jStat;
 });
 
-},{}],42:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -25876,7 +27097,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],43:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -25982,7 +27203,7 @@ checkPropTypes.resetWarningCache = function() {
 module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
-},{"./lib/ReactPropTypesSecret":44,"_process":1}],44:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":48,"_process":1}],48:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -25996,7 +27217,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],45:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 (function (process){
 /** @license React v16.12.0
  * react-dom.development.js
@@ -53795,7 +55016,7 @@ module.exports = reactDom;
 }
 
 }).call(this,require('_process'))
-},{"_process":1,"object-assign":42,"prop-types/checkPropTypes":43,"react":50,"scheduler":55,"scheduler/tracing":56}],46:[function(require,module,exports){
+},{"_process":1,"object-assign":46,"prop-types/checkPropTypes":47,"react":54,"scheduler":59,"scheduler/tracing":60}],50:[function(require,module,exports){
 /** @license React v16.12.0
  * react-dom.production.min.js
  *
@@ -54087,7 +55308,7 @@ xe,ye,Ca.injectEventPluginsByName,fa,Sc,function(a){ya(a,Rc)},cb,db,Pd,Ba,Sj,{cu
 (function(a){var b=a.findFiberByHostInstance;return ok(n({},a,{overrideHookState:null,overrideProps:null,setSuspenseHandler:null,scheduleUpdate:null,currentDispatcherRef:Ea.ReactCurrentDispatcher,findHostInstanceByFiber:function(a){a=ic(a);return null===a?null:a.stateNode},findFiberByHostInstance:function(a){return b?b(a):null},findHostInstancesForRefresh:null,scheduleRefresh:null,scheduleRoot:null,setRefreshHandler:null,getCurrentFiber:null}))})({findFiberByHostInstance:Fc,bundleType:0,version:"16.12.0",
 rendererPackageName:"react-dom"});var Dk={default:Ck},Ek=Dk&&Ck||Dk;module.exports=Ek.default||Ek;
 
-},{"object-assign":42,"react":50,"scheduler":55}],47:[function(require,module,exports){
+},{"object-assign":46,"react":54,"scheduler":59}],51:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -54129,7 +55350,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":45,"./cjs/react-dom.production.min.js":46,"_process":1}],48:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":49,"./cjs/react-dom.production.min.js":50,"_process":1}],52:[function(require,module,exports){
 (function (process){
 /** @license React v16.12.0
  * react.development.js
@@ -56453,7 +57674,7 @@ module.exports = react;
 }
 
 }).call(this,require('_process'))
-},{"_process":1,"object-assign":42,"prop-types/checkPropTypes":43}],49:[function(require,module,exports){
+},{"_process":1,"object-assign":46,"prop-types/checkPropTypes":47}],53:[function(require,module,exports){
 /** @license React v16.12.0
  * react.production.min.js
  *
@@ -56480,7 +57701,7 @@ b,c){return W().useImperativeHandle(a,b,c)},useDebugValue:function(){},useLayout
 if(null!=b){void 0!==b.ref&&(g=b.ref,l=J.current);void 0!==b.key&&(d=""+b.key);if(a.type&&a.type.defaultProps)var f=a.type.defaultProps;for(k in b)K.call(b,k)&&!L.hasOwnProperty(k)&&(e[k]=void 0===b[k]&&void 0!==f?f[k]:b[k])}var k=arguments.length-2;if(1===k)e.children=c;else if(1<k){f=Array(k);for(var m=0;m<k;m++)f[m]=arguments[m+2];e.children=f}return{$$typeof:p,type:a.type,key:d,ref:g,props:e,_owner:l}},createFactory:function(a){var b=M.bind(null,a);b.type=a;return b},isValidElement:N,version:"16.12.0",
 __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentDispatcher:I,ReactCurrentBatchConfig:{suspense:null},ReactCurrentOwner:J,IsSomeRendererActing:{current:!1},assign:h}},Y={default:X},Z=Y&&X||Y;module.exports=Z.default||Z;
 
-},{"object-assign":42}],50:[function(require,module,exports){
+},{"object-assign":46}],54:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -56491,7 +57712,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react.development.js":48,"./cjs/react.production.min.js":49,"_process":1}],51:[function(require,module,exports){
+},{"./cjs/react.development.js":52,"./cjs/react.production.min.js":53,"_process":1}],55:[function(require,module,exports){
 (function (process){
 /** @license React v0.18.0
  * scheduler-tracing.development.js
@@ -56918,7 +58139,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 }
 
 }).call(this,require('_process'))
-},{"_process":1}],52:[function(require,module,exports){
+},{"_process":1}],56:[function(require,module,exports){
 /** @license React v0.18.0
  * scheduler-tracing.production.min.js
  *
@@ -56930,7 +58151,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 
 'use strict';Object.defineProperty(exports,"__esModule",{value:!0});var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unstable_clear=function(a){return a()};exports.unstable_getCurrent=function(){return null};exports.unstable_getThreadID=function(){return++b};exports.unstable_trace=function(a,d,c){return c()};exports.unstable_wrap=function(a){return a};exports.unstable_subscribe=function(){};exports.unstable_unsubscribe=function(){};
 
-},{}],53:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 (function (process){
 /** @license React v0.18.0
  * scheduler.development.js
@@ -57838,7 +59059,7 @@ exports.unstable_Profiling = unstable_Profiling;
 }
 
 }).call(this,require('_process'))
-},{"_process":1}],54:[function(require,module,exports){
+},{"_process":1}],58:[function(require,module,exports){
 /** @license React v0.18.0
  * scheduler.production.min.js
  *
@@ -57862,7 +59083,7 @@ exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();i
 exports.unstable_wrapCallback=function(a){var b=R;return function(){var c=R;R=b;try{return a.apply(this,arguments)}finally{R=c}}};exports.unstable_getCurrentPriorityLevel=function(){return R};exports.unstable_shouldYield=function(){var a=exports.unstable_now();V(a);var b=L(N);return b!==Q&&null!==Q&&null!==b&&null!==b.callback&&b.startTime<=a&&b.expirationTime<Q.expirationTime||k()};exports.unstable_requestPaint=Z;exports.unstable_continueExecution=function(){T||S||(T=!0,f(X))};
 exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNode=function(){return L(N)};exports.unstable_Profiling=null;
 
-},{}],55:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -57873,7 +59094,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/scheduler.development.js":53,"./cjs/scheduler.production.min.js":54,"_process":1}],56:[function(require,module,exports){
+},{"./cjs/scheduler.development.js":57,"./cjs/scheduler.production.min.js":58,"_process":1}],60:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -57884,4 +59105,4 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/scheduler-tracing.development.js":51,"./cjs/scheduler-tracing.production.min.js":52,"_process":1}]},{},[2]);
+},{"./cjs/scheduler-tracing.development.js":55,"./cjs/scheduler-tracing.production.min.js":56,"_process":1}]},{},[2]);
