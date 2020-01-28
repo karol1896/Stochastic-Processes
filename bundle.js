@@ -962,7 +962,7 @@ var GammaOU = function (_React$Component) {
                 _react2.default.createElement(
                     "h1",
                     null,
-                    "Proces Gamma Ornteina Uhlenbecka"
+                    "Proces Gamma Ornsteina Uhlenbecka"
                 ),
                 _react2.default.createElement(
                     "button",
